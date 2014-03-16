@@ -674,19 +674,20 @@ module BigBlueButton
         result = Hash.from_xml(@xml_response)
 
         # simple validation of the xml body
-        unless result.has_key?(:returncode)
-          raise BigBlueButtonException.new("Invalid response body. Is the API URL correct? \"#{@url}\", version #{@version}")
-        end
+       #hided after forking
+     #-   unless result.has_key?(:returncode)
+    #-      raise BigBlueButtonException.new("Invalid response body. Is the API URL correct? \"#{@url}\", version #{@version}")
+     #-   end
 
         # default cleanup in the response
-        result = BigBlueButtonFormatter.new(result).default_formatting
+      #-  result = BigBlueButtonFormatter.new(result).default_formatting
 
         # if the return code is an error generates an exception
-        unless result[:returncode]
-          exception = BigBlueButtonException.new(result[:message])
-          exception.key = result.has_key?(:messageKey) ? result[:messageKey] : ""
-          raise exception
-        end
+        #-unless result[:returncode]
+        #-  exception = BigBlueButtonException.new(result[:message])
+        #-  exception.key = result.has_key?(:messageKey) ? result[:messageKey] : ""
+        #-  raise exception
+        #-end
       end
 
       result
